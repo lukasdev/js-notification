@@ -1,0 +1,38 @@
+<meta charset=UTF-8>
+<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function(){
+		if(Notification.permission !== 'granted')
+			Notification.requestPermission();
+	});
+
+	function notifyMe(icon, title, mensagem, link){
+		if(!Notification){
+			alert('O navegador que você está utilizando não possui o notifications. Tente o Chrome');
+			return;
+		}
+
+		if(Notification.permission !== "granted"){
+			Notification.requestPermission();
+		}else{
+			var notification = new Notification(title, {
+				icon: icon,
+				body: mensagem
+			});
+
+			notification.onclick = function(){
+				window.open(link);
+			};
+		}
+	}
+
+	var icon = 'http://downsmaster.com/public/images/logo.png';
+	var title = 'Programação Orientada a Objetos e MVC com PHP';
+	var mensagem = 'Aprenda programação orientada a objetos com este curso do Downs Master';
+	var link = 'http://cursos.downsmaster.com/curso/programacao-orientada-a-objetos-e-mvc-com-php';
+
+	setTimeout(function(){
+		notifyMe(icon, title, mensagem, link);	
+	}, 5000);
+	
+
+</script>
