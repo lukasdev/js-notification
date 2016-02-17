@@ -23,12 +23,11 @@ $(function(){
 		return horaSec+minSec+Number(tempo[2]);
 	}
 
-	var segundos = converteEmSegundos('00:01:30');
-	var time = 0;
+	var segundos = converteEmSegundos('00:01:00');
 	var t = setInterval(function(){
-		time += 1;
-		$('.timer p').html(converteEmTempo(time));
-		if(time == segundos){
+		segundos -= 1;
+		$('.timer p').html(converteEmTempo(segundos));
+		if(segundos == 0){
 			var icon = 'http://downsmaster.com/public/images/logo.png';
 			var title = 'Mensagem vinda do timer';
 			var mensagem = 'Assista ao curso de Programação Orientada a Objetos do Downs Master';
